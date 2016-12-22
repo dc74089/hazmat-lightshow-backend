@@ -22,21 +22,24 @@ public class RunMe {
         showRef = db.getReference();
         queueRef = db.getReference().child("devices").child("queue");
         newDeviceListener = new NewDeviceListener();
-        queueRef.addChildEventListener(newDeviceListener);
         showRef.child("accepting").addValueEventListener(stopAcceptingListener);
-        showRef.child("cleanup").addValueEventListener(cleanupListener);
 
-        while (true) ;
+        while (true);
     }
 
     static BlankValueListener stopAcceptingListener = new BlankValueListener(){
         @Override
         public void onDataChange(DataSnapshot dataSnapshot) {
             if(!(Boolean) dataSnapshot.getValue()) {
+                System.out.println("Committing newDeviceListener and not accepting new entries.");
                 queueRef.removeEventListener(newDeviceListener);
                 newDeviceListener.commit();
-
-                showRef.child("accepting").removeEventListener(this);
+            } else {
+                System.out.println("Resetting event listener and cleaning up");
+                showRef.child("devices").removeValue();
+                queueRef.removeEventListener(newDeviceListener);
+                newDeviceListener = new NewDeviceListener();
+                queueRef.addChildEventListener(newDeviceListener);
             }
         }
     };
