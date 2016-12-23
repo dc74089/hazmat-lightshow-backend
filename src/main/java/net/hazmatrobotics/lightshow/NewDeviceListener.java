@@ -32,7 +32,7 @@ public class NewDeviceListener implements ChildEventListener {
             synchronized (write) {
                 Integer grade = Math.round((Long) dataSnapshot.getValue());
                 gradeIdMapMap.get(grade).put(dataSnapshot.getKey(), true);
-                allDevices.put(dataSnapshot.getKey(), grade);
+                allDevices.put(dataSnapshot.getKey(), "#000000");
             }
         } catch (Exception e) {
             System.out.println("Class cast exception in NewDeviceListener: Expected grade as integer, got "
@@ -61,12 +61,20 @@ public class NewDeviceListener implements ChildEventListener {
         System.out.println(databaseError.getMessage());
     }
 
-    public void commit() {
+    public Map<String, Integer> commit() {
         showDevicesRef.child("all").updateChildren(allDevices);
         showDevicesRef.child("9").updateChildren(freshmanDeviceIDs);
         showDevicesRef.child("10").updateChildren(sophomoreDeviceIDs);
         showDevicesRef.child("11").updateChildren(juniorDeviceIDs);
         showDevicesRef.child("12").updateChildren(seniorDeviceIDs);
         showDevicesRef.child("queue").removeValue();
+
+        Map<String, Integer> returner = new HashMap<>();
+        for(Integer grade : gradeIdMapMap.keySet()) {
+            for(String key : gradeIdMapMap.get(grade).keySet()) {
+                returner.put(key, grade);
+            }
+        }
+        return returner;
     }
 }
