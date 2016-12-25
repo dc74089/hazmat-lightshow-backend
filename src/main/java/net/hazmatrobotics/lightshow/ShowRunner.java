@@ -1,20 +1,19 @@
-package net.hazmatrobotics.lightshow.show;
-
-import net.hazmatrobotics.lightshow.ClientObject;
+package net.hazmatrobotics.lightshow;
 
 public class ShowRunner implements Runnable {
-    private ClientObject client;
+    private ShowClient client;
     private Integer grade;
     private Long startTime;
     private Boolean shouldStop = false;
     private Integer i, j, k;
     Thread t;
 
-    public ShowRunner(ClientObject client, long startTime) {
+    public ShowRunner(ShowClient client, long startTime) {
         this.client = client;
         this.grade = client.getGrade();
         this.startTime = startTime;
         t = new Thread(this, client.getId());
+        t.start();
     }
 
     @Override
