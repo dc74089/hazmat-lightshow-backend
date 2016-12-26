@@ -27,7 +27,7 @@ public class WebsocketServer extends WebSocketServer {
 
     @Override
     public void onOpen(WebSocket conn, ClientHandshake handshake) {
-        System.out.println("New socket connection! ");
+        //System.out.println("New socket connection! ");
 
         if (!accepting) {
             System.out.println("Ignoring new connection because we are not accepting. ");
@@ -107,6 +107,13 @@ public class WebsocketServer extends WebSocketServer {
     }
 
     public void cleanup() {
+        for (WebSocket s : socketClientMap.keySet()) {
+            try {
+                s.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
         clientList.clear();
         socketClientMap.clear();
     }

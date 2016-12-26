@@ -4,7 +4,7 @@ import org.java_websocket.WebSocket;
 
 public class ShowClient {
     private WebSocket socket;
-    private Integer grade;
+    private Integer grade = 0;
     private Integer id;
 
     public void send(String colorString) {
@@ -12,9 +12,10 @@ public class ShowClient {
             socket.send(colorString);
     }
 
-    public void setSocket(WebSocket socket) {
+    public ShowClient setSocket(WebSocket socket) {
         this.socket = socket;
         this.id = socket.hashCode();
+        return this;
     }
 
     public void setGrade(Integer grade) {
