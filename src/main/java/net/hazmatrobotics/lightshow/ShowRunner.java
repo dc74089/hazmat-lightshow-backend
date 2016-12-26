@@ -2,7 +2,7 @@ package net.hazmatrobotics.lightshow;
 
 import java.util.Random;
 
-public class ShowRunner implements Runnable {
+public class ShowRunner implements Runnable { //TODO: More gracefully handle show stops.
     private ShowClient client;
     private Integer grade = 0;
     private Long startTime;
@@ -10,6 +10,12 @@ public class ShowRunner implements Runnable {
     private Integer i, j, k;
     private Boolean d;
     private Random r;
+
+    Color c1 = new Color("#4D9DE0");
+    Color c2 = new Color("#E15554");
+    Color c3 = new Color("#E1BC29");
+    Color c4 = new Color("#3BB273");
+    Color c5 = new Color("#7768AE");
     Thread t;
 
     public ShowRunner(ShowClient client, long startTime, long seed) {
@@ -24,10 +30,12 @@ public class ShowRunner implements Runnable {
     @Override
     public void run() {
         try {
+            off();
             Thread.sleep(0);
             w(0);
             //System.out.println("Show Start");
             intro();
+            verse1();
         } catch (InterruptedException | RuntimeException e) {
             e.printStackTrace();
         }
@@ -123,19 +131,121 @@ public class ShowRunner implements Runnable {
             if (i < 128) d = true;
             if (i > 254) d = false;
             s(i, 0, 0);
-            sleep(5);
+            p(5);
         });
         dw(28590, () -> {
             if (i > 20) i--;
             s(i, 20, 20);
-            sleep(5);
+            p(5);
         });
         off();
+    }
+
+    private void verse1() throws InterruptedException {
+        w(29118);
+        //Double bubble disco queen
+        if (grade == 10) { /* *************************************************************************************** */
+            i = 0;
+            if (split(4) == 0) s(c1);
+            w(29400);
+            if (split(4) == 0) s(c2);
+            w(29671);
+            if (split(4) == 0) s(c3);
+            w(29957);
+            if (split(4) == 0) s(c4);
+            w(30215);
+            if (split(4) == 0) s(c5);
+            w(30495);
+            if (split(4) == 0) s(c3);
+            w(30726);
+            if (split(4) == 0) s(c1);
+            w(31180);
+            off();
+        }
+        w(29671);
+        i = 128;
+        dw(30726, () -> {
+            i--;
+            s(i, i, i);
+            p(10);
+        });
+        i = 128;
+        dw(31302, () -> {
+            i--;
+            s(i, i, i);
+            p(10);
+        });
+        //Headed to the guillotine
+        if (grade == 11) { /* ************************************************************************************** */
+            i = 0;
+            w(31302);
+            if (split(4) == 0) s(c1);
+            w(31589);
+            if (split(4) == 0) s(c4);
+            w(31859);
+            if (split(4) == 0) s(c3);
+            w(32154);
+            if (split(4) == 0) s(c2);
+            w(32388);
+            if (split(4) == 0) s(c5);
+            w(32711);
+            if (split(4) == 0) s(c2);
+            w(32952);
+            if (split(4) == 0) s(c1);
+            w(33379);
+            off();
+        }
+        dw(31859, () -> {
+            i--;
+            s(i, i, i);
+            p(10);
+        });
+        i = 128;
+        dw(32952, () -> {
+            i--;
+            s(i, i, i);
+            p(10);
+        });
+        i = 128;
+        dw(33481, () -> {
+            i--;
+            s(i, i, i);
+            p(10);
+        });
+        //Skin as cool as Steve McQueen
+        if (grade == 9) { /* *************************************************************************************** */
+            i = 0;
+            w(33481);
+            if (split(4) == 0) s(c4);
+            w(33791);
+            if (split(4) == 0) s(c2);
+            w(24042);
+            if (split(4) == 0) s(c1);
+            w(34308);
+            if (split(4) == 0) s(c3);
+            w(34478);
+            if (split(4) == 0) s(c5);
+            w(34852);
+            if (split(4) == 0) s(c4);
+            w(35107);
+            if (split(4) == 0) s(c3);
+            w(35517);
+            off();
+        }
+        dw(34042, () -> {
+            i--;
+            s(i, i, i);
+            p(10);
+        });
     }
 
     private void s(Integer r, Integer g, Integer b) {
         String out = "#" + componentToHex(constrain(r)) + componentToHex(constrain(g)) + componentToHex(constrain(b));
         client.send(out);
+    }
+
+    private void s(Color c) {
+        client.send(c.getHex());
     }
 
     private void off() {
@@ -146,21 +256,13 @@ public class ShowRunner implements Runnable {
         return System.currentTimeMillis() - startTime;
     }
 
-    private void p(int millis) { //Pause for millis
-        try {
-            Thread.sleep(millis);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-
     private void w(long targetTime) throws InterruptedException { //Wait until show time
         while (z() < targetTime) {
             Thread.sleep(5);
         }
     }
 
-    private void sleep(int millis) {
+    private void p(int millis) { //Pause for millis
         try {
             Thread.sleep(millis);
         } catch (InterruptedException e) {
@@ -186,7 +288,7 @@ public class ShowRunner implements Runnable {
     }
 
     private String componentToHex(Integer component) {
-        if(component > 0) return Integer.toHexString(component);
+        if (component > 0) return Integer.toHexString(component);
         return "00";
     }
 
