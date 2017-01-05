@@ -32,7 +32,7 @@ public class WebsocketServer extends WebSocketServer {
         if (!accepting) {
             System.out.println("Ignoring new connection because we are not accepting. ");
             conn.send("We are not accepting");
-            conn.close();
+            conn.close(0);
         }
 
         ShowClient client = new ShowClient();
