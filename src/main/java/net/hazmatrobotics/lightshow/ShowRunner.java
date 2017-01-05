@@ -15,6 +15,7 @@ public class ShowRunner implements Runnable { //TODO: More gracefully handle sho
 
     private Color c1, c2, c3, c4, c5;
     final Color white = new Color(255, 255, 255);
+    final Color black = new Color(20, 20, 20);
     private Thread t;
 
     public ShowRunner(ShowClient client, long startTime, long seed) {
@@ -34,12 +35,28 @@ public class ShowRunner implements Runnable { //TODO: More gracefully handle sho
         c5 = new Color(255, 154, 0);
     }
 
+    private void ice() {
+        c1 = new Color(184, 223, 231);
+        c2 = new Color(95, 212, 197);
+        c3 = new Color(99, 128, 229);
+        c4 = new Color(64, 59, 189);
+        c5 = new Color(22, 16, 111);
+    }
+
     private void crayons() {
         c1 = new Color(255, 0, 0);
         c2 = new Color(0, 255, 0);
         c3 = new Color(0, 0, 255);
         c4 = new Color(255, 255, 0);
         c5 = new Color(0, 255, 255);
+    }
+
+    private void bright() {
+        c1 = new Color(170,36,206);
+        c2 = new Color(255, 210, 46);
+        c3 = new Color(16, 119, 232);
+        c4 = new Color(16, 194, 255);
+        c5 = new Color(72, 254, 255);
     }
 
     private void allWhite() {
@@ -53,6 +70,7 @@ public class ShowRunner implements Runnable { //TODO: More gracefully handle sho
     @Override
     public void run() {
         try {
+            p(1000);
             off();
             Thread.sleep(0);
             w(0);
@@ -63,6 +81,7 @@ public class ShowRunner implements Runnable { //TODO: More gracefully handle sho
             prechorus1();
             chorus1();
             breakdown();
+            twinkle();
         } catch (InterruptedException | RuntimeException e) {
             e.printStackTrace();
         }
@@ -77,37 +96,37 @@ public class ShowRunner implements Runnable { //TODO: More gracefully handle sho
         i = 255;
         dw(4591, () -> {
             i--;
-            s(0, i, i);
+            s(colorScale(c5, i));
             p(10);
         });
         i = 255;
         dw(5698, () -> {
             i--;
-            s(0, i, i);
+            s(colorScale(c5, i));
             p(10);
         });
         i = 255;
         dw(6787, () -> {
             i--;
-            s(0, i, i);
+            s(colorScale(c5, i));
             p(10);
         });
         i = 255;
         dw(7857, () -> {
             i--;
-            s(0, i, i);
+            s(colorScale(c5, i));
             p(10);
         });
         i = 255;
         dw(8952, () -> {
             i--;
-            s(0, i, i);
+            s(colorScale(c5, i));
             p(10);
         });
         i = 255;
         dw(10071, () -> {
             i--;
-            s(0, i, i);
+            s(colorScale(c5, i));
             p(10);
         });
         off();
@@ -116,7 +135,7 @@ public class ShowRunner implements Runnable { //TODO: More gracefully handle sho
         w(10314);
         if (i == 0) s(c1);
         w(10540);
-        if (i == 1) s(c2);
+        if (i == 1) s(c5);
         w(11124);
         if (i == 2) s(c3);
         w(11505);
@@ -151,6 +170,7 @@ public class ShowRunner implements Runnable { //TODO: More gracefully handle sho
         if (grade == 11) s(255, 0, 0);
         w(17957);
         if (grade == 9) s(255, 0, 0);
+        w(20000);
     }
 
     private void ohFade() throws InterruptedException {
@@ -180,6 +200,7 @@ public class ShowRunner implements Runnable { //TODO: More gracefully handle sho
 
     private void verse1() throws InterruptedException {
         off();
+        bright();
         w(29118);
         //Double bubble disco queen
         if (grade == 10) { /* *************************************************************************************** */
@@ -529,9 +550,9 @@ public class ShowRunner implements Runnable { //TODO: More gracefully handle sho
     }
 
     private void chorus1() throws InterruptedException {
-        i = split(4);
+        i = split(3);
         w(55319);
-        if (i == 0) fd(c3, 8);
+        if (i == 0) fd(c3, 12);
         w(59683);
         if (i == 1) fd(c5, 8);
         setMinute(1);
@@ -571,7 +592,7 @@ public class ShowRunner implements Runnable { //TODO: More gracefully handle sho
         });
         off();
         w(19403);
-        if (grade == 12) dw(20163, () -> {
+        if (grade == 12) dw(21580, () -> {
             s(wheel(Math.round(z() / i)));
             p(10);
         });
@@ -585,50 +606,151 @@ public class ShowRunner implements Runnable { //TODO: More gracefully handle sho
             if (j == 2) s(c3);
             w(21310);
             if (j == 3) s(c4);
+            w(21580);
         }
         off();
         /* ********************************************************************************************************* */
         allWhite();
-        k = split(8);
+        k = split(3);
         w(21607);
         if (grade == 10) dw(23532, () -> {
-            s(wheel(Math.round(z() / i + (64 * k))));
+            s(wheel(Math.round(z() / i + (85 * k))));
             p(10);
         });
         off();
         w(23694);
         if (grade == 11) dw(25735, () -> {
-            s(wheel(Math.round(z() / i + (64 * k))));
+            s(wheel(Math.round(z() / i + (85 * k))));
             p(10);
         });
         off();
         w(25933);
         if (grade == 9) dw(27916, () -> {
-            s(wheel(Math.round(z() / i + (64 * k))));
+            s(wheel(Math.round(z() / i + (85 * k))));
             p(10);
         });
         off();
         w(28105);
-        if (grade == 12) dw(28910, () -> {
-            s(wheel(Math.round(z() / i + (64 * k))));
+        if (grade == 12) dw(30286, () -> {
+            s(wheel(Math.round(z() / i + (85 * k))));
             p(10);
         });
-        off();
-        j = split(4);
-        w(28910);
-        if (j == 0) s(c1);
-        w(29162);
-        if (j == 1) s(c2);
-        w(29544);
-        if (j == 2) s(c3);
-        w(30044);
-        if (j == 3) s(c4);
+        else {
+            off();
+            j = split(4);
+            w(28910);
+            if (j == 0) s(c1);
+            w(29162);
+            if (j == 1) s(c2);
+            w(29544);
+            if (j == 2) s(c3);
+            w(30044);
+            if (j == 3) s(c4);
+            w(30286);
+            off();
+        }
+    }
 
+    private void twinkle() throws InterruptedException {
+        off();
+        i = j = k = 0;
+        c1 = new Color(0, 0, 0);
+        w(30295);
+        dw(39569, () -> {
+            if (split(800) == 0) i = 255;
+            c1 = new Color(i, i, i);
+            s(colorMax(black, c1));
+
+            i--;
+            p(4);
+        });
+        j = 128;
+        dw(40657, () -> {
+            if (split(800) == 0) i = 255;
+            c1 = new Color(i, i, i);
+            c2 = new Color(j, j, j);
+            s(colorMax(colorMax(black, c1), c2));
+
+            i--;
+            j--;
+            p(4);
+        });
+        j = 128;
+        dw(41736, () -> {
+            if (split(800) == 0) i = 255;
+            c1 = new Color(i, i, i);
+            c2 = new Color(j, j, j);
+            s(colorMax(colorMax(black, c1), c2));
+
+            i--;
+            j--;
+            p(4);
+        });
+        j = 128;
+        dw(42807, () -> {
+            if (split(800) == 0) i = 255;
+            c1 = new Color(i, i, i);
+            c2 = new Color(j, j, j);
+            s(colorMax(colorMax(black, c1), c2));
+
+            i--;
+            j--;
+            p(4);
+        });
+        j = 128;
+        dw(43918, () -> {
+            if (split(800) == 0) i = 255;
+            c1 = new Color(i, i, i);
+            c2 = new Color(j, j, j);
+            s(colorMax(colorMax(black, c1), c2));
+
+            i--;
+            j--;
+            p(4);
+        });
+        j = 128;
+        dw(45019, () -> {
+            if (split(800) == 0) i = 255;
+            c1 = new Color(i, i, i);
+            c2 = new Color(j, j, j);
+            s(colorMax(colorMax(black, c1), c2));
+
+            i--;
+            j--;
+            p(4);
+        });
+        j = 128;
+        dw(45577, () -> {
+            if (split(800) == 0) i = 255;
+            c1 = new Color(i, i, i);
+            c2 = new Color(j, j, j);
+            s(colorMax(colorMax(black, c1), c2));
+
+            i--;
+            j--;
+            p(4);
+        });
+        off();
+        ice();
+        i = split(6);
+        w(45784);
+        if (i == 0) s(c1);
+        w(46027);
+        if (i == 1) s(c2);
+        w(46356);
+        if (i == 2) s(c3);
+        w(46629);
+        if (i == 3) s(c4);
+        w(46935);
+        if (i == 5) s(c5);
+        w(47158);
+        s(white);
+        w(47686);
         off();
     }
 
     private void off() {
-        s(20, 20, 20);
+        s(black);
     }
 
     private void s(Integer r, Integer g, Integer b) {
@@ -706,6 +828,24 @@ public class ShowRunner implements Runnable { //TODO: More gracefully handle sho
         }
         pos -= 170;
         return new Color(pos * 3, 255 - pos * 3, 0);
+    }
+
+    private Color colorMax(Color c1, Color c2) {
+        int r, g, b;
+        r = Math.max(c1.r, c2.r);
+        g = Math.max(c1.g, c2.g);
+        b = Math.max(c1.b, c2.b);
+        return new Color(r, g, b);
+    }
+    
+    private Color colorScale(Color c, int scale) {
+        float s = scale/255f;
+        int r, g, b;
+        r = Math.round(s*c.r);
+        g = Math.round(s*c.g);
+        b = Math.round(s*c.b);
+
+        return new Color(r, g, b);
     }
 
     private int split(int groups) {
