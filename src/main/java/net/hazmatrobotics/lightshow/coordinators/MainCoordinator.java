@@ -13,6 +13,8 @@ public class MainCoordinator {
         server = new WebsocketServer(901);
         server.run();
 
+        System.out.println("Boot.");
+
         //noinspection InfiniteLoopStatement
         while (true) {
             Thread.sleep(100);

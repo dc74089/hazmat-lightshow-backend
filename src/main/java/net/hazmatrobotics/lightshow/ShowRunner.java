@@ -14,8 +14,8 @@ public class ShowRunner implements Runnable { //TODO: More gracefully handle sho
     private Random r;
 
     private Color c1, c2, c3, c4, c5;
-    final Color white = new Color(255, 255, 255);
-    final Color black = new Color(20, 20, 20);
+    private final Color white = new Color(255, 255, 255);
+    private final Color black = new Color(20, 20, 20);
     private Thread t;
 
     public ShowRunner(ShowClient client, long startTime, long seed) {
@@ -76,7 +76,7 @@ public class ShowRunner implements Runnable { //TODO: More gracefully handle sho
             w(0);
             //System.out.println("Show Start");
             intro();
-            //ohFade();
+            ohFade();
             verse1();
             prechorus1();
             chorus1();
