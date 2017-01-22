@@ -10,7 +10,7 @@ public class MainCoordinator {
     public static final Integer LOAD_TEST_AMNT = 1000;
 
     public static void main(String... args) throws InterruptedException {
-        server = new WebsocketServer(901);
+        server = new WebsocketServer(80);
         server.run();
 
         System.out.println("Boot.");

@@ -16,7 +16,6 @@ hs_err_pid*
 
 ## Directory-based project format:
 .idea/
-out/
 build/
 src/main/resources/firebase-pkey.json
 .gradle/
@@ -49,8 +48,6 @@ gradle/
 
 ## Plugin-specific files:
 
-# IntelliJ
-/out/
 
 # mpeltonen/sbt-idea plugin
 .idea_modules/
