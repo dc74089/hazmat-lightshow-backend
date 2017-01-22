@@ -1,5 +1,7 @@
 package net.hazmatrobotics.lightshow;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class ShowRunner implements Runnable { //TODO: More gracefully handle show stops.
@@ -9,6 +11,7 @@ public class ShowRunner implements Runnable { //TODO: More gracefully handle sho
     private Boolean shouldStop = false;
     private Integer i, j, k;
     private Float f, g, h;
+    boolean direction;
     private int minute = 0;
     private Boolean d;
     private Random r;
@@ -16,12 +19,21 @@ public class ShowRunner implements Runnable { //TODO: More gracefully handle sho
     private Color c1, c2, c3, c4, c5;
     final Color white = new Color(255, 255, 255);
     final Color black = new Color(20, 20, 20);
+    final List<Color> colors = new ArrayList<>();
     private Thread t;
 
     public ShowRunner(ShowClient client, long startTime, long seed) {
         this.client = client;
         this.grade = client.getGrade();
         this.startTime = startTime;
+
+        allWhite();
+        colors.add(c1);
+        colors.add(c2);
+        colors.add(c3);
+        colors.add(c4);
+        colors.add(c5);
+
         r = new Random(seed);
         t = new Thread(this, client.getId());
         t.start();
@@ -52,7 +64,7 @@ public class ShowRunner implements Runnable { //TODO: More gracefully handle sho
     }
 
     private void bright() {
-        c1 = new Color(170,36,206);
+        c1 = new Color(170, 36, 206);
         c2 = new Color(255, 210, 46);
         c3 = new Color(16, 119, 232);
         c4 = new Color(16, 194, 255);
@@ -76,12 +88,13 @@ public class ShowRunner implements Runnable { //TODO: More gracefully handle sho
             w(0);
             //System.out.println("Show Start");
             intro();
-            //ohFade();
+            ohFade();
             verse1();
             prechorus1();
             chorus1();
             breakdown();
-            twinkle();
+            twinkle2();
+            end();
         } catch (InterruptedException | RuntimeException e) {
             e.printStackTrace();
         }
@@ -95,7 +108,7 @@ public class ShowRunner implements Runnable { //TODO: More gracefully handle sho
         w(3500);
         i = 255;
         dw(4591, () -> {
-            i--;
+            i -= 2;
             s(colorScale(c5, i));
             p(10);
         });
@@ -200,25 +213,32 @@ public class ShowRunner implements Runnable { //TODO: More gracefully handle sho
 
     private void verse1() throws InterruptedException {
         off();
-        bright();
+        ice();
         w(29118);
         //Double bubble disco queen
         if (grade == 10) { /* *************************************************************************************** */
             i = 0;
             off();
-            s(rc());
+            if (split(4) == 0) s(c1);
+            else s(black);
             w(29400);
-            s(rc());
+            if (split(4) == 0) s(c1);
+            else s(black);
             w(29671);
-            s(rc());
+            if (split(4) == 0) s(c1);
+            else s(black);
             w(29957);
-            s(rc());
+            if (split(4) == 0) s(c1);
+            else s(black);
             w(30215);
-            s(rc());
+            if (split(4) == 0) s(c1);
+            else s(black);
             w(30495);
-            s(rc());
+            if (split(4) == 0) s(c1);
+            else s(black);
             w(30726);
-            s(rc());
+            if (split(4) == 0) s(c1);
+            else s(black);
             w(31180);
             off();
         } else {
@@ -241,19 +261,26 @@ public class ShowRunner implements Runnable { //TODO: More gracefully handle sho
             i = 0;
             off();
             w(31302);
-            s(rc());
+            if (split(4) == 0) s(c2);
+            else s(black);
             w(31589);
-            s(rc());
+            if (split(4) == 0) s(c2);
+            else s(black);
             w(31859);
-            s(rc());
+            if (split(4) == 0) s(c2);
+            else s(black);
             w(32154);
-            s(rc());
+            if (split(4) == 0) s(c2);
+            else s(black);
             w(32388);
-            s(rc());
+            if (split(4) == 0) s(c2);
+            else s(black);
             w(32711);
-            s(rc());
+            if (split(4) == 0) s(c2);
+            else s(black);
             w(32952);
-            s(rc());
+            if (split(4) == 0) s(c2);
+            else s(black);
             w(33379);
             off();
         } else {
@@ -280,19 +307,26 @@ public class ShowRunner implements Runnable { //TODO: More gracefully handle sho
             i = 0;
             off();
             w(33481);
-            s(rc());
+            if (split(4) == 0) s(c3);
+            else s(black);
             w(33791);
-            s(rc());
+            if (split(4) == 0) s(c3);
+            else s(black);
             w(34042);
-            s(rc());
+            if (split(4) == 0) s(c3);
+            else s(black);
             w(34308);
-            s(rc());
+            if (split(4) == 0) s(c3);
+            else s(black);
             w(34478);
-            s(rc());
+            if (split(4) == 0) s(c3);
+            else s(black);
             w(34852);
-            s(rc());
+            if (split(4) == 0) s(c3);
+            else s(black);
             w(35107);
-            s(rc());
+            if (split(4) == 0) s(c3);
+            else s(black);
             w(35517);
             off();
         } else {
@@ -342,15 +376,20 @@ public class ShowRunner implements Runnable { //TODO: More gracefully handle sho
             i = 0;
             off();
             w(37916);
-            s(rc());
+            if (split(4) == 0) s(c4);
+            else s(black);
             w(38222);
-            s(rc());
+            if (split(4) == 0) s(c4);
+            else s(black);
             w(38447);
-            s(rc());
+            if (split(4) == 0) s(c4);
+            else s(black);
             w(38735);
-            s(rc());
+            if (split(4) == 0) s(c4);
+            else s(black);
             w(38982);
-            s(rc());
+            if (split(4) == 0) s(c4);
+            else s(black);
             w(39233);
             off();
         } else {
@@ -367,19 +406,26 @@ public class ShowRunner implements Runnable { //TODO: More gracefully handle sho
             i = 0;
             off();
             w(39497);
-            s(rc());
+            if (split(4) == 0) s(c5);
+            else s(black);
             w(39758);
-            s(rc());
+            if (split(4) == 0) s(c5);
+            else s(black);
             w(40072);
-            s(rc());
+            if (split(4) == 0) s(c5);
+            else s(black);
             w(40316);
-            s(rc());
+            if (split(4) == 0) s(c5);
+            else s(black);
             w(40580);
-            s(rc());
+            if (split(4) == 0) s(c5);
+            else s(black);
             w(40867);
-            s(rc());
+            if (split(4) == 0) s(c5);
+            else s(black);
             w(41099);
-            s(rc());
+            if (split(4) == 0) s(c5);
+            else s(black);
             w(41401);
             off();
         } else {
@@ -401,19 +447,26 @@ public class ShowRunner implements Runnable { //TODO: More gracefully handle sho
             i = 0;
             off();
             w(41671);
-            s(rc());
+            if (split(4) == 0) s(c1);
+            else s(black);
             w(42025);
-            s(rc());
+            if (split(4) == 0) s(c1);
+            else s(black);
             w(42217);
-            s(rc());
+            if (split(4) == 0) s(c1);
+            else s(black);
             w(42472);
-            s(rc());
+            if (split(4) == 0) s(c1);
+            else s(black);
             w(42643);
-            s(rc());
+            if (split(4) == 0) s(c1);
+            else s(black);
             w(43000);
-            s(rc());
+            if (split(4) == 0) s(c1);
+            else s(black);
             w(43230);
-            s(rc());
+            if (split(4) == 0) s(c1);
+            else s(black);
             w(43607);
             off();
         } else {
@@ -459,38 +512,39 @@ public class ShowRunner implements Runnable { //TODO: More gracefully handle sho
     }
 
     private void prechorus1() throws InterruptedException {
+        fire();
         //My touch is black and poisonous
         w(46263); //My
-        if (grade == 9) fd(rc(), 0.8f);
+        if (grade == 9) fd(c1, 0.8f);
         w(46561); //touch
-        if (grade == 12) fd(rc(), 0.8f);
+        if (grade == 12) fd(c1, 0.8f);
         w(47397); //is
-        if (grade == 10) fd(rc(), 0.8f);
+        if (grade == 10) fd(c2, 0.8f);
         w(47643); //black
-        if (grade == 11) fd(rc(), 0.8f);
+        if (grade == 11) fd(c2, 0.8f);
         w(47961); //and
-        if (grade == 9) fd(rc(), 0.8f);
+        if (grade == 9) fd(c5, 0.8f);
         w(48212); //poi-
-        if (grade == 12) fd(rc(), 0.8f);
+        if (grade == 12) fd(c5, 0.8f);
         w(48509); //-son-
-        if (grade == 10) fd(rc(), 0.8f);
+        if (grade == 10) fd(c4, 0.8f);
         w(48766); //-ous
-        if (grade == 11) fd(rc(), 0.8f);
+        if (grade == 11) fd(c4, 0.8f);
         //And nothing like my
         w(49591); //and
-        if (grade == 12) fd(rc(), 0.8f);
+        if (grade == 12) fd(c3, 0.8f);
         w(49843); //no-
-        if (grade == 10) fd(rc(), 0.8f);
+        if (grade == 10) fd(c3, 0.8f);
         w(50130); //-thing
-        if (grade == 11) fd(rc(), 0.8f);
+        if (grade == 11) fd(c3, 0.8f);
         w(50318); //like
-        if (grade == 9) fd(rc(), 0.8f);
+        if (grade == 9) fd(c2, 0.8f);
         w(50679); //my
-        if (grade == 12) fd(rc(), 0.8f);
+        if (grade == 12) fd(c2, 0.8f);
         w(50940); //Punch
-        if (grade == 10 || grade == 11) fd(rc(), 0.8f);
+        if (grade == 10 || grade == 11) fd(white, 0.8f);
         w(51478); //Drunk
-        if (grade == 9 || grade == 12) s(rc());
+        if (grade == 9 || grade == 12) s(white);
         w(51755);
         off();
         //Kiss I know you need it till you feel it drink of water drink of wine
@@ -550,18 +604,19 @@ public class ShowRunner implements Runnable { //TODO: More gracefully handle sho
     }
 
     private void chorus1() throws InterruptedException {
+        crayons();
         i = split(3);
         w(55319);
-        if (i == 0) fd(c3, 12);
+        if (i == 0) fd(c1, 12);
         w(59683);
-        if (i == 1) fd(c5, 8);
+        if (i == 1) fd(c2, 8);
         setMinute(1);
         w(4055);
-        if (i == 2) fd(c2, 6);
+        if (i == 2) fd(c3, 6);
     }
 
     private void breakdown() throws InterruptedException {
-        crayons();
+        allWhite();
         setMinute(1);
         w(11173);
         off();
@@ -572,7 +627,7 @@ public class ShowRunner implements Runnable { //TODO: More gracefully handle sho
             p(5);
         });
         off();
-        i = 3;
+        i = 6; //TODO: Check wheel speed here
         w(12842);
         if (grade == 10) dw(14789, () -> {
             s(wheel(Math.round(z() / i)));
@@ -611,21 +666,21 @@ public class ShowRunner implements Runnable { //TODO: More gracefully handle sho
         off();
         /* ********************************************************************************************************* */
         allWhite();
-        k = split(3);
+        k = 0;
         w(21607);
-        if (grade == 10) dw(23532, () -> {
+        if (grade == 10 || grade == 11) dw(23532, () -> {
             s(wheel(Math.round(z() / i + (85 * k))));
             p(10);
         });
         off();
         w(23694);
-        if (grade == 11) dw(25735, () -> {
+        if (grade == 12 || grade == 9) dw(25735, () -> {
             s(wheel(Math.round(z() / i + (85 * k))));
             p(10);
         });
         off();
         w(25933);
-        if (grade == 9) dw(27916, () -> {
+        if (grade == 10 || grade == 11) dw(27916, () -> {
             s(wheel(Math.round(z() / i + (85 * k))));
             p(10);
         });
@@ -649,15 +704,17 @@ public class ShowRunner implements Runnable { //TODO: More gracefully handle sho
             w(30286);
             off();
         }
+        off();
     }
 
     private void twinkle() throws InterruptedException {
         off();
         i = j = k = 0;
+        k = 1600;
         c1 = new Color(0, 0, 0);
         w(30295);
         dw(39569, () -> {
-            if (split(800) == 0) i = 255;
+            if (split(k) == 0) i = 255;
             c1 = new Color(i, i, i);
             s(colorMax(black, c1));
 
@@ -666,7 +723,7 @@ public class ShowRunner implements Runnable { //TODO: More gracefully handle sho
         });
         j = 128;
         dw(40657, () -> {
-            if (split(800) == 0) i = 255;
+            if (split(k) == 0) i = 255;
             c1 = new Color(i, i, i);
             c2 = new Color(j, j, j);
             s(colorMax(colorMax(black, c1), c2));
@@ -677,7 +734,7 @@ public class ShowRunner implements Runnable { //TODO: More gracefully handle sho
         });
         j = 128;
         dw(41736, () -> {
-            if (split(800) == 0) i = 255;
+            if (split(k) == 0) i = 255;
             c1 = new Color(i, i, i);
             c2 = new Color(j, j, j);
             s(colorMax(colorMax(black, c1), c2));
@@ -688,7 +745,7 @@ public class ShowRunner implements Runnable { //TODO: More gracefully handle sho
         });
         j = 128;
         dw(42807, () -> {
-            if (split(800) == 0) i = 255;
+            if (split(k) == 0) i = 255;
             c1 = new Color(i, i, i);
             c2 = new Color(j, j, j);
             s(colorMax(colorMax(black, c1), c2));
@@ -699,7 +756,7 @@ public class ShowRunner implements Runnable { //TODO: More gracefully handle sho
         });
         j = 128;
         dw(43918, () -> {
-            if (split(800) == 0) i = 255;
+            if (split(k) == 0) i = 255;
             c1 = new Color(i, i, i);
             c2 = new Color(j, j, j);
             s(colorMax(colorMax(black, c1), c2));
@@ -710,7 +767,7 @@ public class ShowRunner implements Runnable { //TODO: More gracefully handle sho
         });
         j = 128;
         dw(45019, () -> {
-            if (split(800) == 0) i = 255;
+            if (split(k) == 0) i = 255;
             c1 = new Color(i, i, i);
             c2 = new Color(j, j, j);
             s(colorMax(colorMax(black, c1), c2));
@@ -721,7 +778,7 @@ public class ShowRunner implements Runnable { //TODO: More gracefully handle sho
         });
         j = 128;
         dw(45577, () -> {
-            if (split(800) == 0) i = 255;
+            if (split(k) == 0) i = 255;
             c1 = new Color(i, i, i);
             c2 = new Color(j, j, j);
             s(colorMax(colorMax(black, c1), c2));
@@ -731,7 +788,7 @@ public class ShowRunner implements Runnable { //TODO: More gracefully handle sho
             p(4);
         });
         off();
-        ice();
+        allWhite();
         i = split(6);
         w(45784);
         if (i == 0) s(c1);
@@ -746,6 +803,154 @@ public class ShowRunner implements Runnable { //TODO: More gracefully handle sho
         w(47158);
         s(white);
         w(47686);
+        off();
+    }
+
+    private void twinkle2() throws InterruptedException {
+        off();
+        ice();
+
+        i = j = k = 0;
+        i = split(5);
+        j = split(255);
+        final Color myColor = colors.get(i);
+        direction = split(2) == 0;
+
+        w(30295);
+        dw(39569, () -> {
+            if (i < 4 && z() < 94680) return;
+            if (i < 2) return;
+
+            if (j >= 255) direction = false;
+            if (j <= 0) direction = true;
+
+            if (direction) j++;
+            else j--;
+
+            s(colorMax(black, colorScale(myColor, j)));
+
+            p(10);
+        });
+        k = 128;
+        dw(40657, () -> {
+            if (j >= 255) direction = false;
+            if (j <= 0) direction = true;
+
+            if (direction) j++;
+            else j--;
+
+            s(colorMax(new Color(k, k, k), colorScale(myColor, j)));
+
+            k--;
+            p(10);
+        });
+        k = 128;
+        dw(41736, () -> {
+            if (j >= 255) direction = false;
+            if (j <= 0) direction = true;
+
+            if (direction) j++;
+            else j--;
+
+            s(colorMax(new Color(k, k, k), colorScale(myColor, j)));
+
+            k--;
+            p(10);
+        });
+        k = 128;
+        dw(42807, () -> {
+            if (j >= 255) direction = false;
+            if (j <= 0) direction = true;
+
+            if (direction) j++;
+            else j--;
+
+            s(colorMax(new Color(k, k, k), colorScale(myColor, j)));
+
+            k--;
+            p(10);
+        });
+        k = 128;
+        dw(43918, () -> {
+            if (j >= 255) direction = false;
+            if (j <= 0) direction = true;
+
+            if (direction) j++;
+            else j--;
+
+            s(colorMax(new Color(k, k, k), colorScale(myColor, j)));
+
+            k--;
+            p(10);
+        });
+        k = 128;
+        dw(45019, () -> {
+            if (j >= 255) direction = false;
+            if (j <= 0) direction = true;
+
+            if (direction) j++;
+            else j--;
+
+            s(colorMax(new Color(k, k, k), colorScale(myColor, j)));
+
+            k--;
+            p(10);
+        });
+        k = 128;
+        dw(45577, () -> {
+            if (j >= 255) direction = false;
+            if (j <= 0) direction = true;
+
+            if (direction) j++;
+            else j--;
+
+            s(colorMax(new Color(k, k, k), colorScale(myColor, j)));
+
+            k--;
+            p(10);
+        });
+        off();
+        allWhite();
+        i = split(6);
+        w(45784);
+        if (i == 0) s(c1);
+        w(46027);
+        if (i == 1) s(c2);
+        w(46356);
+        if (i == 2) s(c3);
+        w(46629);
+        if (i == 3) s(c4);
+        w(46935);
+        if (i == 5) s(c5);
+        w(47158);
+        s(white);
+        w(47686);
+        off();
+    }
+
+    private void end() throws InterruptedException {
+        w(47745);
+
+        j = 0;
+        dw(63831, () -> {
+            if (split(600) == 0) j = 255;
+            if (j > 0) j -= 3;
+            s(colorMax(new Color(j, j, j), black));
+            p(10);
+        });
+
+        w(63831);
+        off();
+        setMinute(2);
+        i = split(4);
+
+        if (i == 0) s(white);
+        w(4061);
+        if (i == 1) s(white);
+        w(4560);
+        if (i == 2) s(white);
+        w(4938);
+        fd(white, 3);
         off();
     }
 
@@ -837,13 +1042,14 @@ public class ShowRunner implements Runnable { //TODO: More gracefully handle sho
         b = Math.max(c1.b, c2.b);
         return new Color(r, g, b);
     }
-    
+
     private Color colorScale(Color c, int scale) {
-        float s = scale/255f;
+        if (scale < 0) scale = 0;
+        float s = scale / 255f;
         int r, g, b;
-        r = Math.round(s*c.r);
-        g = Math.round(s*c.g);
-        b = Math.round(s*c.b);
+        r = Math.round(s * c.r);
+        g = Math.round(s * c.g);
+        b = Math.round(s * c.b);
 
         return new Color(r, g, b);
     }

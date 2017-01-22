@@ -9,6 +9,7 @@ import java.nio.ByteBuffer;
 import java.nio.channels.NotYetConnectedException;
 
 public class FakeSocket implements WebSocket {
+
     @Override
     public void close(int code, String message) {
 
@@ -31,17 +32,17 @@ public class FakeSocket implements WebSocket {
 
     @Override
     public void send(String text) throws NotYetConnectedException {
-
+        Math.pow(123456, 12345);
     }
 
     @Override
     public void send(ByteBuffer bytes) throws IllegalArgumentException, NotYetConnectedException {
-
+        send("");
     }
 
     @Override
     public void send(byte[] bytes) throws IllegalArgumentException, NotYetConnectedException {
-
+        send("");
     }
 
     @Override

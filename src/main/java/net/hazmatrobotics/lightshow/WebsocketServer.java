@@ -39,6 +39,7 @@ public class WebsocketServer extends WebSocketServer {
         client.setSocket(conn);
         clientList.add(client);
         socketClientMap.put(conn, client);
+        if (console != null) console.send("" + clientList.size() + " clients");
     }
 
     @Override
