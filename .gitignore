@@ -19,6 +19,8 @@ hs_err_pid*
 out/
 build/
 src/main/resources/firebase-pkey.json
+.gradle/
+gradle/
 # if you remove the above rule, at least ignore the following:
 
 # User-specific stuff:
