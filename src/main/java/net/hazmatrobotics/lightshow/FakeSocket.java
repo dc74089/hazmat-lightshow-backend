@@ -51,6 +51,11 @@ public class FakeSocket implements WebSocket {
     }
 
     @Override
+    public void sendFragmentedFrame(Framedata.Opcode opcode, ByteBuffer byteBuffer, boolean b) {
+
+    }
+
+    @Override
     public boolean hasBufferedData() {
         return false;
     }
@@ -97,6 +102,11 @@ public class FakeSocket implements WebSocket {
 
     @Override
     public READYSTATE getReadyState() {
+        return null;
+    }
+
+    @Override
+    public String getResourceDescriptor() {
         return null;
     }
 }
