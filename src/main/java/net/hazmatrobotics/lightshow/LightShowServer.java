@@ -11,17 +11,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class WebsocketServer extends WebSocketServer {
+public class LightShowServer extends WebSocketServer {
     private Boolean accepting = true;
     private List<ShowClient> clientList = new ArrayList<>();
     private Map<WebSocket, ShowClient> socketClientMap = new HashMap<>();
     public static WebSocket console;
 
-    public WebsocketServer(int port) {
+    public LightShowServer(int port) {
         super(new InetSocketAddress(port));
     }
 
-    public WebsocketServer(InetSocketAddress address) {
+    public LightShowServer(InetSocketAddress address) {
         super(address);
     }
 
