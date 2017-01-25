@@ -1,19 +1,20 @@
 package net.hazmatrobotics.lightshow.coordinators;
 
-import net.hazmatrobotics.lightshow.WebsocketServer;
+import net.hazmatrobotics.lightshow.LightShowServer;
 
 public class MainCoordinator {
-    private static WebsocketServer server;
+    private static LightShowServer server;
     private static ShowCoordinator sc;
     private static Boolean accepting = true;
     public static final Boolean LOAD_TEST = false;
     public static final Integer LOAD_TEST_AMNT = 1000;
+    public static final Integer PORT = 901;
 
     public static void main(String... args) throws InterruptedException {
-        server = new WebsocketServer(80);
-        server.run();
+        server = new LightShowServer(PORT);
+        server.start();
 
-        System.out.println("Boot.");
+        System.out.println("Boot on port " + server.getPort());
 
         //noinspection InfiniteLoopStatement
         while (true) {

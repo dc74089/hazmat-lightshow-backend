@@ -3,7 +3,7 @@ package net.hazmatrobotics.lightshow.coordinators;
 import net.hazmatrobotics.lightshow.FakeSocket;
 import net.hazmatrobotics.lightshow.ShowClient;
 import net.hazmatrobotics.lightshow.ShowRunner;
-import net.hazmatrobotics.lightshow.WebsocketServer;
+import net.hazmatrobotics.lightshow.LightShowServer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +29,7 @@ public class ShowCoordinator {
 
     public void start() {
         startTime = System.currentTimeMillis() + 3000;
-        WebsocketServer.console.send("##" + startTime);
+        LightShowServer.console.send("##" + startTime);
         for (ShowClient c : clientList) {
             ShowRunner runner = new ShowRunner(c, startTime, r.nextLong());
             runnerList.add(runner);
