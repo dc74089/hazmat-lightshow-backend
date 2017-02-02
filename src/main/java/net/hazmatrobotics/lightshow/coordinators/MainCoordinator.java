@@ -1,6 +1,7 @@
 package net.hazmatrobotics.lightshow.coordinators;
 
 import net.hazmatrobotics.lightshow.LightShowServer;
+import net.hazmatrobotics.lightshow.WebServerTest;
 
 public class MainCoordinator {
     private static LightShowServer server;
@@ -15,6 +16,12 @@ public class MainCoordinator {
         server.start();
 
         System.out.println("Boot on port " + server.getPort());
+
+        try {
+            WebServerTest.main(null);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         //noinspection InfiniteLoopStatement
         while (true) {
