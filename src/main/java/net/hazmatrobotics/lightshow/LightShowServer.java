@@ -27,7 +27,7 @@ public class LightShowServer extends WebSocketServer {
 
     @Override
     public void onOpen(WebSocket conn, ClientHandshake handshake) {
-        //System.out.println("New socket connection! ");
+        System.out.println("New socket connection! ");
 
         if (!accepting) {
             System.out.println("Ignoring new connection because we are not accepting. ");
@@ -39,7 +39,7 @@ public class LightShowServer extends WebSocketServer {
         client.setSocket(conn);
         clientList.add(client);
         socketClientMap.put(conn, client);
-        if (console != null) console.send("" + clientList.size() + " clients");
+        if (console != null) console.send("New client: total of " + clientList.size() + " clients");
     }
 
     @Override

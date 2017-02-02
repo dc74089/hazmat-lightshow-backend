@@ -5,10 +5,9 @@ import net.hazmatrobotics.lightshow.LightShowServer;
 public class MainCoordinator {
     private static LightShowServer server;
     private static ShowCoordinator sc;
-    private static Boolean accepting = true;
     public static final Boolean LOAD_TEST = false;
     public static final Integer LOAD_TEST_AMNT = 1000;
-    public static final Integer PORT = 901;
+    public static final Integer PORT = 80;
 
     public static void main(String... args) throws InterruptedException {
         System.out.println("Starting on port " + PORT);
@@ -25,11 +24,8 @@ public class MainCoordinator {
 
     public static void setAccepting(Boolean shouldAccept) {
         if (shouldAccept) {
-            accepting = true;
             server.setAccepting(true);
-
         } else {
-            accepting = false;
             server.setAccepting(false);
         }
     }
