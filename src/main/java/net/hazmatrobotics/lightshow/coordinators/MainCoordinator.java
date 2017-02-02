@@ -8,7 +8,7 @@ public class MainCoordinator {
     private static ShowCoordinator sc;
     public static final Boolean LOAD_TEST = false;
     public static final Integer LOAD_TEST_AMNT = 1000;
-    public static final Integer PORT = 80;
+    public static final Integer PORT = 8000;
 
     public static void main(String... args) throws InterruptedException {
         System.out.println("Starting on port " + PORT);
@@ -18,7 +18,7 @@ public class MainCoordinator {
         System.out.println("Boot on port " + server.getPort());
 
         try {
-            WebServerTest.main(null);
+            //WebServerTest.main(null);
         } catch (Exception e) {
             e.printStackTrace();
         }
