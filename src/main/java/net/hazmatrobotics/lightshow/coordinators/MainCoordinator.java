@@ -11,7 +11,7 @@ public class MainCoordinator {
     public static final Integer PORT = 8000;
 
     public static void main(String... args) throws InterruptedException {
-        System.out.println("Starting on port " + PORT);
+        System.out.println("Version 1");
         server = new LightShowServer(PORT);
         server.start();
 

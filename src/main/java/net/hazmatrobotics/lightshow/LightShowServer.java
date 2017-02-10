@@ -18,7 +18,7 @@ public class LightShowServer extends WebSocketServer {
     public static WebSocket console;
 
     public LightShowServer(int port) {
-        super(new InetSocketAddress("0.0.0.0", port));
+        super(new InetSocketAddress(port));
     }
 
     public LightShowServer(InetSocketAddress address) {
