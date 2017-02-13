@@ -5,7 +5,6 @@ import net.hazmatrobotics.lightshow.ShowServer;
 public class MainCoordinator {
     private static ShowServer server;
     private static ShowCoordinator sc;
-    private static Boolean accepting = true;
     public static final Boolean LOAD_TEST = false;
     public static final Integer LOAD_TEST_AMNT = 1000;
 
@@ -13,6 +12,7 @@ public class MainCoordinator {
         server = new ShowServer(80);
         server.run();
 
+        System.out.println("Version 2");
         System.out.println("Boot.");
 
         //noinspection InfiniteLoopStatement
@@ -22,14 +22,7 @@ public class MainCoordinator {
     }
 
     public static void setAccepting(Boolean shouldAccept) {
-        if (shouldAccept) {
-            accepting = true;
-            server.setAccepting(true);
-
-        } else {
-            accepting = false;
-            server.setAccepting(false);
-        }
+        server.setAccepting(shouldAccept);
     }
 
     public static void start() {
