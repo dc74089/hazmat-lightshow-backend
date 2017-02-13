@@ -10,7 +10,7 @@ public class MainCoordinator {
 
     public static void main(String... args) throws InterruptedException {
         server = new ShowServer(80);
-        server.run();
+        server.start();
 
         System.out.println("Version 2");
         System.out.println("Boot.");
