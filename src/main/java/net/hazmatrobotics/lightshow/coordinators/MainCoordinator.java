@@ -1,16 +1,16 @@
 package net.hazmatrobotics.lightshow.coordinators;
 
-import net.hazmatrobotics.lightshow.WebsocketServer;
+import net.hazmatrobotics.lightshow.ShowServer;
 
 public class MainCoordinator {
-    private static WebsocketServer server;
+    private static ShowServer server;
     private static ShowCoordinator sc;
     private static Boolean accepting = true;
     public static final Boolean LOAD_TEST = false;
     public static final Integer LOAD_TEST_AMNT = 1000;
 
     public static void main(String... args) throws InterruptedException {
-        server = new WebsocketServer(80);
+        server = new ShowServer(80);
         server.run();
 
         System.out.println("Boot.");
