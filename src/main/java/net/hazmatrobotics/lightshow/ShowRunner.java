@@ -88,13 +88,13 @@ public class ShowRunner implements Runnable { //TODO: More gracefully handle sho
             w(0);
             //System.out.println("Show Start");
             intro();
-            //ohFade();
+            ohFade();
             verse1();
             prechorus1();
             chorus1();
             breakdown();
-            //twinkle2();
-            //end();
+            twinkle2();
+            end();
         } catch (InterruptedException | RuntimeException e) {
             e.printStackTrace();
         }

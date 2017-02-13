@@ -12,7 +12,7 @@ public class MainCoordinator {
         server = new ShowServer(8000);
         server.start();
 
-        System.out.println("Version 3");
+        System.out.println("Version 4");
         System.out.println("Boot.");
 
         //noinspection InfiniteLoopStatement
