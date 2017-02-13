@@ -9,7 +9,7 @@ public class MainCoordinator {
     public static final Integer LOAD_TEST_AMNT = 1000;
 
     public static void main(String... args) throws InterruptedException {
-        server = new ShowServer(80);
+        server = new ShowServer(8000);
         server.start();
 
         System.out.println("Version 2");
