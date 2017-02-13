@@ -624,7 +624,7 @@ public class ShowRunner implements Runnable { //TODO: More gracefully handle sho
         if (grade == 12) dw(12684, () -> {
             s(i, i, i);
             i++;
-            p(5);
+            p(10);
         });
         off();
         i = 6; //TODO: Check wheel speed here
@@ -718,8 +718,8 @@ public class ShowRunner implements Runnable { //TODO: More gracefully handle sho
             c1 = new Color(i, i, i);
             s(colorMax(black, c1));
 
-            i--;
-            p(4);
+            i-= 2;
+            p(10);
         });
         j = 128;
         dw(40657, () -> {
@@ -728,9 +728,9 @@ public class ShowRunner implements Runnable { //TODO: More gracefully handle sho
             c2 = new Color(j, j, j);
             s(colorMax(colorMax(black, c1), c2));
 
-            i--;
-            j--;
-            p(4);
+            i-= 2;
+            j-= 2;
+            p(10);
         });
         j = 128;
         dw(41736, () -> {
@@ -739,9 +739,9 @@ public class ShowRunner implements Runnable { //TODO: More gracefully handle sho
             c2 = new Color(j, j, j);
             s(colorMax(colorMax(black, c1), c2));
 
-            i--;
-            j--;
-            p(4);
+            i-= 2;
+            j-= 2;
+            p(10);
         });
         j = 128;
         dw(42807, () -> {
@@ -750,9 +750,9 @@ public class ShowRunner implements Runnable { //TODO: More gracefully handle sho
             c2 = new Color(j, j, j);
             s(colorMax(colorMax(black, c1), c2));
 
-            i--;
-            j--;
-            p(4);
+            i-= 2;
+            j-= 2;
+            p(10);
         });
         j = 128;
         dw(43918, () -> {
@@ -761,9 +761,9 @@ public class ShowRunner implements Runnable { //TODO: More gracefully handle sho
             c2 = new Color(j, j, j);
             s(colorMax(colorMax(black, c1), c2));
 
-            i--;
-            j--;
-            p(4);
+            i-= 2;
+            j-= 2;
+            p(10);
         });
         j = 128;
         dw(45019, () -> {
@@ -772,9 +772,9 @@ public class ShowRunner implements Runnable { //TODO: More gracefully handle sho
             c2 = new Color(j, j, j);
             s(colorMax(colorMax(black, c1), c2));
 
-            i--;
-            j--;
-            p(4);
+            i-= 2;
+            j-= 2;
+            p(10);
         });
         j = 128;
         dw(45577, () -> {
@@ -783,9 +783,9 @@ public class ShowRunner implements Runnable { //TODO: More gracefully handle sho
             c2 = new Color(j, j, j);
             s(colorMax(colorMax(black, c1), c2));
 
-            i--;
-            j--;
-            p(4);
+            i-= 2;
+            j-= 2;
+            p(10);
         });
         off();
         allWhite();
