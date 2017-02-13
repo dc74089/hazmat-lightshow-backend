@@ -36,7 +36,7 @@ public class ShowCoordinator {
         }
         System.out.println("Starting show with " + runnerList.size() + " clients");
 
-        while (startTime < System.currentTimeMillis()) {
+        while (startTime > System.currentTimeMillis()) {
             try {
                 Thread.sleep(10);
             } catch (InterruptedException e) {
