@@ -20,6 +20,7 @@ build/
 src/main/resources/firebase-pkey.json
 .gradle/
 gradle/
+src/main/java/net/hazmatrobotics/lightshow/Secret.java
 # if you remove the above rule, at least ignore the following:
 
 # User-specific stuff:
