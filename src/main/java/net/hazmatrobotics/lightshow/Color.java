@@ -17,7 +17,11 @@ public class Color {
     }
 
     private String componentToHex(Integer component) {
-        if (component > 0) return Integer.toHexString(component);
+        if (component > 0) {
+            String out = Integer.toHexString(component);
+            if(out.length() == 1) return "0" + out;
+            return out;
+        }
         return "00";
     }
 }

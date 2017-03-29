@@ -1021,7 +1021,7 @@ public class ShowRunner implements Runnable { //TODO: More gracefully handle sho
         return c1;
     }
 
-    private Color wheel(int pos) {
+    public static Color wheel(int pos) {
         pos = pos % 255;
         pos = 255 - pos;
         if (pos < 85) {

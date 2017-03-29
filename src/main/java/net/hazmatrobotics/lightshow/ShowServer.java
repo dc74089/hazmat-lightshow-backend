@@ -21,10 +21,6 @@ public class ShowServer extends WebSocketServer {
         super(new InetSocketAddress(port));
     }
 
-    public ShowServer(InetSocketAddress address) {
-        super(address);
-    }
-
     @Override
     public void onOpen(WebSocket conn, ClientHandshake handshake) {
         //System.out.println("New socket connection! ");
@@ -52,7 +48,7 @@ public class ShowServer extends WebSocketServer {
         if (message.equals("-542696465")) {
             System.out.println("Authenticated Console");
             console = conn;
-            clientList.remove(conn);
+            clientList.remove(socketClientMap.get(conn));
             socketClientMap.remove(conn);
             conn.send("Authenticated.");
             return;
