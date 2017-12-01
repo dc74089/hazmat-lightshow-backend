@@ -45,7 +45,7 @@ public class ShowServer extends WebSocketServer {
 
     @Override
     public void onMessage(WebSocket conn, String message) {
-        if (message.equals("-542696465")) {
+        if (message.equals("1747897")) {
             System.out.println("Authenticated Console");
             console = conn;
             clientList.remove(socketClientMap.get(conn));

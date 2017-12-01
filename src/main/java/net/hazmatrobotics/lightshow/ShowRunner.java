@@ -7,6 +7,7 @@ import java.util.Random;
 public class ShowRunner implements Runnable { //TODO: More gracefully handle show stops.
     private ShowClient client;
     private Integer grade = 0;
+    long lastSend = 0;
     private Long startTime;
     private Boolean shouldStop = false;
     private Integer i, j, k;
@@ -197,7 +198,7 @@ public class ShowRunner implements Runnable { //TODO: More gracefully handle sho
             else i--;
             if (i < 128) d = true;
             if (i > 254) d = false;
-            s(i, 0, 0);
+            sb(i, 0, 0);
 
             f -= 0.018f;
             if (f <= 1) f = 1f;
@@ -392,6 +393,7 @@ public class ShowRunner implements Runnable { //TODO: More gracefully handle sho
             else s(black);
             w(39233);
             off();
+            w(39497);
         } else {
             w(38388);
             i = 128;
@@ -428,6 +430,7 @@ public class ShowRunner implements Runnable { //TODO: More gracefully handle sho
             else s(black);
             w(41401);
             off();
+            w(41671);
         } else {
             i = 128;
             dw(40580, () -> {
@@ -469,6 +472,7 @@ public class ShowRunner implements Runnable { //TODO: More gracefully handle sho
             else s(black);
             w(43607);
             off();
+            w(43828);
         } else {
             i = 128;
             dw(42643, () -> {
@@ -827,7 +831,7 @@ public class ShowRunner implements Runnable { //TODO: More gracefully handle sho
             if (direction) j++;
             else j--;
 
-            s(colorMax(black, colorScale(myColor, j)));
+            sb(colorMax(black, colorScale(myColor, j)));
 
             p(10);
         });
@@ -965,6 +969,25 @@ public class ShowRunner implements Runnable { //TODO: More gracefully handle sho
 
     private void s(Color c) {
         client.send(c.getHex());
+    }
+
+    private void sb(Color c) {
+        long ctm = System.currentTimeMillis();
+
+        if(ctm - lastSend > 50) {
+            client.send(c.getHex());
+            lastSend = ctm;
+        }
+    }
+
+    private void sb(Integer r, Integer g, Integer b) { //Send Buffered
+        long ctm = System.currentTimeMillis();
+
+        if(ctm - lastSend > 50) {
+            String out = "#" + componentToHex(constrain(r)) + componentToHex(constrain(g)) + componentToHex(constrain(b));
+            client.send(out);
+            lastSend = ctm;
+        }
     }
 
     private long z() { //Current show time
