@@ -16,7 +16,7 @@ public class MainCoordinator {
         server = new ShowServer(8000);
         server.start();
 
-        System.out.println("Version 5");
+        System.out.println("Version 2018.1");
         System.out.println("Boot.");
 
         if(LOAD_TEST) {

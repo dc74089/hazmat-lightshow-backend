@@ -15,6 +15,8 @@ public class ShowCoordinator {
     Long startTime;
     Random r = new Random();
 
+    final long OFFSET = 0;
+
     public ShowCoordinator(List<ShowClient> clients) {
         this.clientList = clients;
 
@@ -28,7 +30,7 @@ public class ShowCoordinator {
     }
 
     public void start() {
-        startTime = System.currentTimeMillis() + 3000;
+        startTime = System.currentTimeMillis() + 3000 + OFFSET;
         //ShowServer.console.send("##" + startTime);
         for (ShowClient c : clientList) {
             ShowRunner runner = new ShowRunner(c, startTime, r.nextLong());

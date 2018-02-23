@@ -7,20 +7,20 @@ import java.util.Random;
 public class ShowRunner implements Runnable { //TODO: More gracefully handle show stops.
     private ShowClient client;
     private Integer grade = 0;
-    long lastSend = 0;
+    private long lastSend = 0;
     private Long startTime;
     private Boolean shouldStop = false;
     private Integer i, j, k;
     private Float f, g, h;
-    boolean direction;
+    private boolean direction;
     private int minute = 0;
     private Boolean d;
     private Random r;
 
     private Color c1, c2, c3, c4, c5;
-    final Color white = new Color(255, 255, 255);
-    final Color black = new Color(20, 20, 20);
-    final List<Color> colors = new ArrayList<>();
+    private final Color white = new Color(255, 255, 255);
+    private final Color black = new Color(20, 20, 20);
+    private final List<Color> colors = new ArrayList<>();
     private Thread t;
 
     public ShowRunner(ShowClient client, long startTime, long seed) {
@@ -811,6 +811,7 @@ public class ShowRunner implements Runnable { //TODO: More gracefully handle sho
     }
 
     private void twinkle2() throws InterruptedException {
+        System.out.println("Twinkle2");
         off();
         ice();
 
@@ -936,7 +937,7 @@ public class ShowRunner implements Runnable { //TODO: More gracefully handle sho
         w(47745);
 
         j = 0;
-        dw(63831, () -> {
+        dw(63831, () -> { //TODO: Boring, change me
             if (split(600) == 0) j = 255;
             if (j > 0) j -= 3;
             s(colorMax(new Color(j, j, j), black));
