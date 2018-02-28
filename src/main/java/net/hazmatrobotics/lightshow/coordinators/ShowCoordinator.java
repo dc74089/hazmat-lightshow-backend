@@ -31,10 +31,10 @@ public class ShowCoordinator {
     }
 
     public void start() {
-        startTime = System.currentTimeMillis() + 3000 + OFFSET;
+        startTime = System.currentTimeMillis() + 3000;
         //ShowServer.console.send("##" + startTime);
         for (ShowClient c : clientList) {
-            ShowRunner runner = new ShowRunner(c, startTime, r.nextLong());
+            ShowRunner runner = new ShowRunner(c, startTime + OFFSET, r.nextLong());
             runnerList.add(runner);
         }
         System.out.println("Starting show with " + runnerList.size() + " clients");
