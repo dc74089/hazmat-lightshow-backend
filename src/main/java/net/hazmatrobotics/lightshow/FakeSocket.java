@@ -43,10 +43,7 @@ public class FakeSocket implements WebSocket {
 
     @Override
     public void send(String text) throws NotYetConnectedException {
-        for(int i = 0; i < 10; i++) {
-            md.update(text.getBytes());
-            md.digest();
-        }
+
     }
 
     @Override
