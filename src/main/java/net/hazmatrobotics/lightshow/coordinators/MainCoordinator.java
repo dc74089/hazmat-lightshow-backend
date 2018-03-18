@@ -6,7 +6,7 @@ public class MainCoordinator {
     private static ShowServer server;
     private static ShowCoordinator sc;
     public static final Boolean LOAD_TEST = true;
-    public static final Integer LOAD_TEST_AMNT = 1000;
+    public static final Integer LOAD_TEST_AMNT = 100;
 
     public static void main(String... args) throws InterruptedException {
         server = new ShowServer(8000);
