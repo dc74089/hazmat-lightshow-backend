@@ -7,8 +7,19 @@ import org.java_websocket.framing.Framedata;
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
 import java.nio.channels.NotYetConnectedException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 public class FakeSocket implements WebSocket {
+    MessageDigest md;
+
+    {
+        try {
+            md = MessageDigest.getInstance("SHA-256");
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+    }
 
     @Override
     public void close(int code, String message) {
@@ -32,7 +43,10 @@ public class FakeSocket implements WebSocket {
 
     @Override
     public void send(String text) throws NotYetConnectedException {
-        Math.pow(123456, 12345);
+        for(int i = 0; i < 10; i++) {
+            md.update(text.getBytes());
+            md.digest();
+        }
     }
 
     @Override

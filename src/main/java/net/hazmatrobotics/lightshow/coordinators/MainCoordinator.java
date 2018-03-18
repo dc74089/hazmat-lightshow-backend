@@ -1,16 +1,12 @@
 package net.hazmatrobotics.lightshow.coordinators;
 
 import net.hazmatrobotics.lightshow.ShowServer;
-import net.hazmatrobotics.lightshow.loadtest.LoadRunner;
-import net.hazmatrobotics.lightshow.loadtest.LoadServer;
 
 public class MainCoordinator {
     private static ShowServer server;
-    private static LoadServer loadServer;
     private static ShowCoordinator sc;
-    public static final Boolean LOAD_TEST = false;
+    public static final Boolean LOAD_TEST = true;
     public static final Integer LOAD_TEST_AMNT = 1000;
-    public static LoadRunner lr;
 
     public static void main(String... args) throws InterruptedException {
         server = new ShowServer(8000);
@@ -18,13 +14,6 @@ public class MainCoordinator {
 
         System.out.println("Version 2018.1");
         System.out.println("Boot.");
-
-        if(LOAD_TEST) {
-            loadServer = new LoadServer(8080);
-            loadServer.start();
-            lr = new LoadRunner();
-            lr.start();
-        }
 
         //noinspection InfiniteLoopStatement
         while (true) {

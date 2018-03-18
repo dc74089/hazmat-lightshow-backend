@@ -15,11 +15,15 @@ public class ShowCoordinator {
     Long startTime;
     Random r = new Random();
 
-    private final long OFFSET;
+    private long OFFSET;
 
     public ShowCoordinator(List<ShowClient> clients) {
         this.clientList = clients;
-        OFFSET = Long.parseLong(System.getenv("OFFSET"));
+        try {
+            OFFSET = Long.parseLong(System.getenv("OFFSET"));
+        } catch (NumberFormatException ignored) {
+            OFFSET = 0;
+        }
 
         if (MainCoordinator.LOAD_TEST) {
             for (int i = 0; i < MainCoordinator.LOAD_TEST_AMNT; i++) {

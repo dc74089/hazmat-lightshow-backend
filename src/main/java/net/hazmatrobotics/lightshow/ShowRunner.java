@@ -936,11 +936,19 @@ public class ShowRunner implements Runnable { //TODO: More gracefully handle sho
     private void end() throws InterruptedException {
         w(47745);
 
-        j = 0;
-        dw(63831, () -> { //TODO: Boring, change me
-            if (split(600) == 0) j = 255;
-            if (j > 0) j -= 3;
-            s(colorMax(new Color(j, j, j), black));
+        i = 64 * split(4);
+        j = split(255);
+        direction = j % 2 == 0;
+        dw(63831, () -> { //TODO: Something to the words
+            if (direction) j++;
+            else j--;
+            i ++;
+
+            if (j >= 254) direction = false;
+            if (j <= 100) direction = true;
+
+            s(colorMax(colorScale(wheel(i), j), black));
+
             p(10);
         });
 
