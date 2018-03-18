@@ -1,6 +1,5 @@
 package net.hazmatrobotics.lightshow;
 
-import com.sun.tools.javac.Main;
 import net.hazmatrobotics.lightshow.coordinators.MainCoordinator;
 import org.java_websocket.WebSocket;
 import org.java_websocket.handshake.ClientHandshake;
