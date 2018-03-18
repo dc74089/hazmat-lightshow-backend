@@ -12,7 +12,7 @@ public class MainCoordinator {
         server = new ShowServer(8000);
         server.start();
 
-        System.out.println("Version 2018.2");
+        System.out.println("Version 2018.3");
         if (LOAD_TEST) System.out.println("LOAD TESTING x" + LOAD_TEST_AMNT);
         System.out.println("Boot.");
 

@@ -940,8 +940,21 @@ public class ShowRunner implements Runnable { //TODO: More gracefully handle sho
         j = split(255);
         direction = j % 2 == 0;
 
-        //Tonight we are victorious
         dw(56475, () -> {
+            if (direction) j++;
+            else j--;
+            i++;
+
+            if (j >= 254) direction = false;
+            if (j <= 100) direction = true;
+
+            s(colorMax(colorScale(wheel(i), j), black));
+
+            p(10);
+        });
+
+        //Tonight we are victorious
+        dw(58665, () -> {
             if (direction) j++;
             else j--;
             i++;
@@ -958,7 +971,7 @@ public class ShowRunner implements Runnable { //TODO: More gracefully handle sho
         });
 
         //Champagne pouring over us
-        dw(58665, () -> {
+        dw(60851, () -> {
             if (direction) j++;
             else j--;
             i++;
@@ -975,7 +988,7 @@ public class ShowRunner implements Runnable { //TODO: More gracefully handle sho
         });
 
         //All my friends we're glorious
-        dw(60851, () -> {
+        dw(63025, () -> {
             if (direction) j++;
             else j--;
             i++;
@@ -992,21 +1005,7 @@ public class ShowRunner implements Runnable { //TODO: More gracefully handle sho
         });
 
         //Tonight we are
-        dw(63025, () -> {
-            if (direction) j++;
-            else j--;
-            i++;
-
-            if (j >= 254) direction = false;
-            if (j <= 100) direction = true;
-
-            if (grade == 12)
-                s(colorMax(colorScale(white, j), black));
-            else
-                s(colorMax(colorScale(wheel(i), j), black));
-
-            p(10);
-        });
+        off();
 
         w(63831);
         off();
