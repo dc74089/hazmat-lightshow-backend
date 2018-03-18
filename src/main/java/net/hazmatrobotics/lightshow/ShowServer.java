@@ -20,7 +20,7 @@ public class ShowServer extends WebSocketServer {
     public ShowServer(int port) {
         super(new InetSocketAddress(port));
 
-        if(MainCoordinator.LOAD_TEST) {
+        if (MainCoordinator.LOAD_TEST) {
             for (int i = 0; i < MainCoordinator.LOAD_TEST_AMNT; i++)
                 onOpen(new FakeSocket(), null);
         }

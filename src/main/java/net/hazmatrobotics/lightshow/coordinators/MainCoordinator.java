@@ -5,14 +5,15 @@ import net.hazmatrobotics.lightshow.ShowServer;
 public class MainCoordinator {
     private static ShowServer server;
     private static ShowCoordinator sc;
-    public static final Boolean LOAD_TEST = false;
+    public static final Boolean LOAD_TEST = true;
     public static final Integer LOAD_TEST_AMNT = 1000;
 
     public static void main(String... args) throws InterruptedException {
         server = new ShowServer(8000);
         server.start();
 
-        System.out.println("Version 2018.1");
+        System.out.println("Version 2018.2");
+        if (LOAD_TEST) System.out.println("LOAD TESTING x" + LOAD_TEST_AMNT);
         System.out.println("Boot.");
 
         //noinspection InfiniteLoopStatement

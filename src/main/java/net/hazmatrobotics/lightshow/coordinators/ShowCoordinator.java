@@ -1,6 +1,5 @@
 package net.hazmatrobotics.lightshow.coordinators;
 
-import net.hazmatrobotics.lightshow.FakeSocket;
 import net.hazmatrobotics.lightshow.ShowClient;
 import net.hazmatrobotics.lightshow.ShowRunner;
 import net.hazmatrobotics.lightshow.ShowServer;
@@ -25,13 +24,7 @@ public class ShowCoordinator {
             OFFSET = 0;
         }
 
-        if (MainCoordinator.LOAD_TEST) {
-            for (int i = 0; i < MainCoordinator.LOAD_TEST_AMNT; i++) {
-                this.clientList.add(new ShowClient().setSocket(new FakeSocket()));
-            }
-        }
-
-        runnerList = new ArrayList<>(clientList.size());
+        runnerList = new ArrayList<>();
     }
 
     public void start() {

@@ -369,9 +369,9 @@ public class ShowRunner implements Runnable { //TODO: More gracefully handle sho
         if (i == 6) s(c4);
         w(37634);
         off();
-/* ********************************************************************************************************************
- **********************************************************************************************************************
- ******************************************************************************************************************** */
+        /* ********************************************************************************************************************
+         **********************************************************************************************************************
+         ******************************************************************************************************************** */
         //Hurts until it stops
         if (grade == 10) { /* *************************************************************************************** */
             i = 0;
@@ -722,7 +722,7 @@ public class ShowRunner implements Runnable { //TODO: More gracefully handle sho
             c1 = new Color(i, i, i);
             s(colorMax(black, c1));
 
-            i-= 2;
+            i -= 2;
             p(10);
         });
         j = 128;
@@ -732,8 +732,8 @@ public class ShowRunner implements Runnable { //TODO: More gracefully handle sho
             c2 = new Color(j, j, j);
             s(colorMax(colorMax(black, c1), c2));
 
-            i-= 2;
-            j-= 2;
+            i -= 2;
+            j -= 2;
             p(10);
         });
         j = 128;
@@ -743,8 +743,8 @@ public class ShowRunner implements Runnable { //TODO: More gracefully handle sho
             c2 = new Color(j, j, j);
             s(colorMax(colorMax(black, c1), c2));
 
-            i-= 2;
-            j-= 2;
+            i -= 2;
+            j -= 2;
             p(10);
         });
         j = 128;
@@ -754,8 +754,8 @@ public class ShowRunner implements Runnable { //TODO: More gracefully handle sho
             c2 = new Color(j, j, j);
             s(colorMax(colorMax(black, c1), c2));
 
-            i-= 2;
-            j-= 2;
+            i -= 2;
+            j -= 2;
             p(10);
         });
         j = 128;
@@ -765,8 +765,8 @@ public class ShowRunner implements Runnable { //TODO: More gracefully handle sho
             c2 = new Color(j, j, j);
             s(colorMax(colorMax(black, c1), c2));
 
-            i-= 2;
-            j-= 2;
+            i -= 2;
+            j -= 2;
             p(10);
         });
         j = 128;
@@ -776,8 +776,8 @@ public class ShowRunner implements Runnable { //TODO: More gracefully handle sho
             c2 = new Color(j, j, j);
             s(colorMax(colorMax(black, c1), c2));
 
-            i-= 2;
-            j-= 2;
+            i -= 2;
+            j -= 2;
             p(10);
         });
         j = 128;
@@ -787,8 +787,8 @@ public class ShowRunner implements Runnable { //TODO: More gracefully handle sho
             c2 = new Color(j, j, j);
             s(colorMax(colorMax(black, c1), c2));
 
-            i-= 2;
-            j-= 2;
+            i -= 2;
+            j -= 2;
             p(10);
         });
         off();
@@ -942,7 +942,7 @@ public class ShowRunner implements Runnable { //TODO: More gracefully handle sho
         dw(63831, () -> { //TODO: Something to the words
             if (direction) j++;
             else j--;
-            i ++;
+            i++;
 
             if (j >= 254) direction = false;
             if (j <= 100) direction = true;
@@ -983,7 +983,7 @@ public class ShowRunner implements Runnable { //TODO: More gracefully handle sho
     private void sb(Color c) {
         long ctm = System.currentTimeMillis();
 
-        if(ctm - lastSend > 50) {
+        if (ctm - lastSend > 50) {
             client.send(c.getHex());
             lastSend = ctm;
         }
@@ -992,7 +992,7 @@ public class ShowRunner implements Runnable { //TODO: More gracefully handle sho
     private void sb(Integer r, Integer g, Integer b) { //Send Buffered
         long ctm = System.currentTimeMillis();
 
-        if(ctm - lastSend > 50) {
+        if (ctm - lastSend > 50) {
             String out = "#" + componentToHex(constrain(r)) + componentToHex(constrain(g)) + componentToHex(constrain(b));
             client.send(out);
             lastSend = ctm;
