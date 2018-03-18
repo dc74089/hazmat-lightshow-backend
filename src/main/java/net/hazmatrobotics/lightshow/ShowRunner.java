@@ -939,7 +939,9 @@ public class ShowRunner implements Runnable { //TODO: More gracefully handle sho
         i = 64 * split(4);
         j = split(255);
         direction = j % 2 == 0;
-        dw(63831, () -> { //TODO: Something to the words
+
+        //Tonight we are victorious
+        dw(56475, () -> {
             if (direction) j++;
             else j--;
             i++;
@@ -947,7 +949,61 @@ public class ShowRunner implements Runnable { //TODO: More gracefully handle sho
             if (j >= 254) direction = false;
             if (j <= 100) direction = true;
 
-            s(colorMax(colorScale(wheel(i), j), black));
+            if (grade == 9)
+                s(colorMax(colorScale(white, j), black));
+            else
+                s(colorMax(colorScale(wheel(i), j), black));
+
+            p(10);
+        });
+
+        //Champagne pouring over us
+        dw(58665, () -> {
+            if (direction) j++;
+            else j--;
+            i++;
+
+            if (j >= 254) direction = false;
+            if (j <= 100) direction = true;
+
+            if (grade == 10)
+                s(colorMax(colorScale(white, j), black));
+            else
+                s(colorMax(colorScale(wheel(i), j), black));
+
+            p(10);
+        });
+
+        //All my friends we're glorious
+        dw(60851, () -> {
+            if (direction) j++;
+            else j--;
+            i++;
+
+            if (j >= 254) direction = false;
+            if (j <= 100) direction = true;
+
+            if (grade == 11)
+                s(colorMax(colorScale(white, j), black));
+            else
+                s(colorMax(colorScale(wheel(i), j), black));
+
+            p(10);
+        });
+
+        //Tonight we are
+        dw(63025, () -> {
+            if (direction) j++;
+            else j--;
+            i++;
+
+            if (j >= 254) direction = false;
+            if (j <= 100) direction = true;
+
+            if (grade == 12)
+                s(colorMax(colorScale(white, j), black));
+            else
+                s(colorMax(colorScale(wheel(i), j), black));
 
             p(10);
         });
